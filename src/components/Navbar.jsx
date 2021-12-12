@@ -1,111 +1,97 @@
-import { Badge } from '@material-ui/core';
-import { Search, ShoppingCartOutlined } from '@material-ui/icons';
-import React from 'react'
-import styled from 'styled-components'
-import tw from 'twin.macro'
+import { Badge } from "@material-ui/core";
+import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import React from "react";
+import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
-    ${tw`
-       h-12
-    `}
+  height: 60px;
+  ${mobile({ height: "50px" })}
 `;
 
 const Wrapper = styled.div`
-    ${tw`
-       py-2.5
-       px-5   
-       flex
-       items-center
-       justify-between
-    `}
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  ${mobile({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
-    ${tw `
-        flex-1
-        flex
-        items-center
-    `}
+  flex: 1;
+  display: flex;
+  align-items: center;
 `;
 
 const Language = styled.span`
-    ${tw `
-        text-sm
-        cursor-pointer
-    `}
+  font-size: 14px;
+  cursor: pointer;
+  ${mobile({ display: "none" })}
 `;
 
 const SearchContainer = styled.div`
-    border: 0.5px solid lightgray;
-    ${tw `
-        flex
-        items-center
-        ml-6
-        p-1.5 
-    `}
+  border: 0.5px solid lightgray;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 5px;
 `;
+
 const Input = styled.input`
-    ${tw `
-        border-none
-        outline-none 
-    `}   
+  border: none;
+  ${mobile({ width: "50px" })}
 `;
 
 const Center = styled.div`
-    ${tw `
-        flex-1
-        text-center
-    `}
-`;
-const Logo = styled.h1`
-    font-weight: bold;
-    ${tw `
-        text-4xl
-    `}
+  flex: 1;
+  text-align: center;
 `;
 
+const Logo = styled.h1`
+  font-weight: bold;
+  ${mobile({ fontSize: "24px" })}
+`;
 const Right = styled.div`
-    ${tw `
-        flex-1 
-        flex
-        items-center 
-        justify-end 
-    `}
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 
 const MenuItem = styled.div`
-    ${tw `
-        text-sm
-        cursor-pointer
-        ml-6
-    `}
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-
 const Navbar = () => {
-    return (
-        <Container>
-            <Wrapper>
-                <Left>
-                    <Language>EN</Language>
-                    <SearchContainer>
-                        <Input/>
-                        <Search style={{color:"gray", fontSize:16}} />
-                    </SearchContainer>
-                </Left>
-                <Center><Logo>VICKY.</Logo></Center>
-                <Right>
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
-                    <MenuItem>
-                       <Badge badgeContent={4} color="primary">
-                           <ShoppingCartOutlined color="action" />
-                        </Badge>
-                    </MenuItem>
-                </Right>  
-            </Wrapper>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Wrapper>
+        <Left>
+          <Language>EN</Language>
+          <SearchContainer>
+            <Input placeholder="Search" />
+            <Search style={{ color: "gray", fontSize: 16 }} />
+          </SearchContainer>
+        </Left>
+        <Center>
+          <Logo>VICKY.</Logo>
+        </Center>
+        <Right>
+          <MenuItem>REGISTER</MenuItem>
+          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem>
+            <Badge badgeContent={4} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
+          </MenuItem>
+        </Right>
+      </Wrapper>
+    </Container>
+  );
+};
 
-export default Navbar
+export default Navbar;
